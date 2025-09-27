@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+.crossfade-enter-active,
+.crossfade-leave-active {
+  transition: opacity 0.8s ease-in-out;
+}
+
+.crossfade-enter-from,
+.crossfade-leave-to {
+  opacity: 0;
+}
+
+.crossfade-enter-to,
+.crossfade-leave-from {
+  opacity: 1;
+}
+
+/* Alternative approach for smoother crossfade */
+.crossfade-enter-active {
+  transition: opacity 0.8s ease-in-out;
+  transition-delay: 0.1s;
+}
+
+.crossfade-leave-active {
+  transition: opacity 0.8s ease-in-out;
+}
+
+body {
+    background: 
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* overlay hitam transparan */
+      url("/assets/Cartethyia.png") no-repeat top center;
+    background-size: cover;
+    background-attachment: scroll; /* ikut scroll */
+  }
+  
