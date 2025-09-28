@@ -1,72 +1,3 @@
-// import { useState, useEffect } from "react";
-
-// const Navbar = () => {
-//   const [active, setActive] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       if (window.scrollY > 150) {
-//         setActive(true);
-//       } else {
-//         setActive(false);
-//       }
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => {
-//       window.addEventListener("scroll", handleScroll);
-//     };
-//   }, []);
-
-//   return (
-//     <div className="navbar py-7 flex items-center justify-between">
-//       <div className="logo ">
-//         <h1 className="relative z-20 text-4xl bg-clip-text text-transparent font-extrabold bg-gradient-to-tr from-blue-200 to-[#fdc698] md:bg-transparent">
-//           CarteChia
-//         </h1>
-//       </div>
-//       <ul className={`menu flex items-center sm:gap-5 gap-4 fixed left-1/2
-//     -translate-x-1/2 md:-translate-x-0 md:static p-4 rounded-br-2xl rounded-bl-2xl
-
-    
-//     bg-gradient-to-r from-[#1f3d91] to-[#fab700] 
-
-//     md:[background-image:none] md:bg-transparent md:backdrop-blur-none
-
-//     transition-all md:transition-none md:opacity-100 z-50
-//     ${active ? "top-0 opacity-100" : "opacity-0 -top-10"}`}>
-//         <li>
-//           <a href="" className="sm:text-lg text-base font-medium ">
-//             Home
-//           </a>
-//         </li>
-//         <li>
-//           <a href="" className="sm:text-lg text-base font-medium">
-//             About
-//           </a>
-//         </li>
-//         <li>
-//           <a href="" className="sm:text-lg text-base font-medium">
-//             Projects
-//           </a>
-//         </li>
-//         <li>
-//           <a href="" className="sm:text-lg text-base font-medium">
-//             Github
-//           </a>
-//         </li>
-//         <li>
-//           <a href="" className="sm:text-lg text-base font-medium">
-//             Contact
-//           </a>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -91,7 +22,7 @@ const Navbar = () => {
     <div className="navbar py-7 flex items-center justify-between relative z-20">
       <div className="logo">
         <h1 
-          className="text-4xl bg-clip-text text-transparent font-extrabold bg-gradient-to-tr from-blue-200 to-[#fdc698]"
+          className="text-4xl bg-clip-text text-transparent font-extrabold bg-gradient-to-l from-blue-500 to-amber-400"
         >
           CarteChia
         </h1>

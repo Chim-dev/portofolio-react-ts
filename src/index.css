@@ -4,7 +4,11 @@
 
 @layer base {
   body {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: "Kaushan Script", cursive;
+  }
+
+  h1  {
+    font-family:"Dancing Script", cursive;
   }
 }
 .crossfade-enter-active,
@@ -35,8 +39,10 @@
 body {
     background: 
       linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* overlay hitam transparan */
-      url("/assets/Cartethyia.png") no-repeat top center;
+      url("/assets/Cartethyia2.png") no-repeat top center;
     background-size: cover;
     background-attachment: scroll; /* ikut scroll */
+    background-position: right 0 top 20%;
+
   }
   

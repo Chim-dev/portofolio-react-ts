@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.css";
-import { listTools } from "./data";
+import { listTools,listProyek } from "./data";
 
 function App() {
   const images: string[] = [
@@ -23,14 +23,13 @@ function App() {
 
   return (
     <>
-      <div className="relative z-10 min-h-screen">
         <div className="hero px-4 py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-10">
             <div>
               <h1 className="text-5xl/tight font-bold mb-6 bg-gradient-to-r from-[#36a5f0] to-[#fab700] text-transparent bg-clip-text">
                 Hi, I'm CarteChia
               </h1>
-              <p className="text-base/loose mb-6 opacity-90 text-white drop-shadow-md">
+              <p className="text-xl/relaxed mb-6 opacity-80 drop-shadow-md">
                 I'm an aspiring Full-Stack Software Engineer with a passion for
                 building scalable and user-friendly applications. This website
                 showcases my project documentation, from early experiments to more
@@ -78,17 +77,18 @@ function App() {
               alt="myCutiePie"
               className="w-12 rounded-md mb-10 sm:hidden"
             />
-            <p className="text-base/loose mb-10 text-white">
+            <p className="text-xl/loose mb-1 text-white opacity-90">
               Hi, My Name is CarteChia. I'm an Undergraduate Institute Technology
               of Kalimantan's student, I'm a Full Stack Web Developer and Machine
               Learning Enthusiast... You will get to know me in the near future as
-              I would update this Portofolio as often as possible ;D
+              I will update this Portofolio as often as possible ;D
             </p>
             <div className="flex items-center justify-between">
               <img
                 src="/assets/logo.png"
                 alt="myCartePie"
                 className="w-[100px] rounded-md sm:block hidden"
+                loading="lazy"
               />
               <div className="flex items-center gap-6">
                 <div>
@@ -116,7 +116,7 @@ function App() {
             </p>
 
             {/* Grid container */}
-            <div className="tools-box mt-14 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="tools-box mt-14 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {listTools.map((tool) => (
                 <div 
                   className="flex items-center gap-4 p-4 border border-zinc-600/50 rounded-md hover:bg-zinc-800/60 group backdrop-blur-md bg-zinc-900/40 transition-all duration-300" 
@@ -126,6 +126,7 @@ function App() {
                     src={tool.gambar}
                     alt="Tools img"
                     className="w-14 h-14 object-contain bg-zinc-800/80 p-2 rounded-md group-hover:bg-zinc-900/80"
+                    loading="lazy"
                   />
                   <div>
                     <h4 className="font-semibold text-white">{tool.nama}</h4>
@@ -136,7 +137,30 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+        {/* Project */}
+        <div className="project mt-32 py-10">
+          <h1 className="text-center text-4xl font-bold mb-2">Projects</h1>
+          <p className="text-base/loose text-center opacity-50">Projects List History</p>
+          <div className="projects-box mt-14 grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1 ">
+              {listProyek.map((project) => (
+                <div key={project.id} className="p-4 bg-zinc-800/50 backdrop-opacity-35 rounded-xl border border-amber-200">
+                  <img src={project.gambar} alt="project image" loading="lazy"/>
+                  <div>
+                    <h1 className="text-2xl font-bold my-4">{project.nama}</h1>
+                    <p className="text-base/loose mb-4">{project.desk}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tools.map((tool, index) => (
+                        <p key={index} className="py-1 px-3 border border-zinc-500 bg-zinc-600 rounded-md font-semibold">{tool}</p>
+                      ))}
+                    </div>
+                    <div className="mt-5 text-center">
+                      <a href="#" className="rounded-lg p-3 block bg-[#00000023] border border-amber-400 text-amber-400 font-semibold hover:bg-amber-400 hover:text-black transition">View Projects</a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>   
+        </div>
     </>
   );
 }
