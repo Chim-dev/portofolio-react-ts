@@ -7,8 +7,8 @@
     font-family: "Kaushan Script", cursive;
   }
 
-  h1  {
-    font-family:"Dancing Script", cursive;
+  h1 {
+    font-family: "Dancing Script", cursive;
   }
 }
 .crossfade-enter-active,
@@ -36,13 +36,37 @@
   transition: opacity 0.8s ease-in-out;
 }
 
-body {
-    background: 
-      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* overlay hitam transparan */
-      url("/assets/Cartethyia2.png") no-repeat top center;
-    background-size: cover;
-    background-attachment: scroll; /* ikut scroll */
-    background-position: right 0 top 20%;
+@layer base {
+  body { 
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+      url("/assets/Cartethyia2.png") no-repeat top 
+        center;
+   background-size: cover;
+   background-position: right 0 top 50%;
+   z-index: -100;
+   pointer-events: none; /* gak bisa di-klik */
+   transform: none !important; /* cegah efek zoom dari AOS/animate.css */
+ } 
+}
 
+@keyframes glow {
+  0% {
+    opacity: 0;
+    filter: drop-shadow(0 0 0px #fff);
+    transform: translateY(20px);
   }
-  
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px #fff);
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px #fff);
+  }
+}
+
+.animate-glow {
+  animation: glow 0.8s ease forwards;
+}
+
