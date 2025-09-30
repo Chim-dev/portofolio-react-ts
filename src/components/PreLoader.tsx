@@ -7,7 +7,7 @@ const Preloader = () => {
 
   useEffect(() => {
     // total durasi animasi huruf (0.2s per huruf × jumlah huruf) + extra
-    const showTime = text.length * 150 + 1000;
+    const showTime = text.length * 100 + 1000;
 
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
