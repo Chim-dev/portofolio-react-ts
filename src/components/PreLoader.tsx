@@ -27,13 +27,13 @@ const Preloader = () => {
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-1000 ${
+      className={`fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-1000 overflow-hidden h-screen ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
       <h1
         className={`flex text-6xl font-extrabold tracking-wide transform transition-all duration-1000 ${
-          fadeOut ? "opacity-0 -translate-y-5" : "opacity-100 translate-y-0"
+          fadeOut ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}
       >
         {text.map((char, index) => (

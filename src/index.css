@@ -11,6 +11,7 @@
     font-family: "Dancing Script", cursive;
   }
 }
+
 .crossfade-enter-active,
 .crossfade-leave-active {
   transition: opacity 0.8s ease-in-out;
@@ -36,30 +37,19 @@
   transition: opacity 0.8s ease-in-out;
 }
 
-@layer base {
-  body { 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-      url("/assets/Cartethyia2.png") no-repeat top 
-        center;
-   background-size: cover;
-   background-position: right 0 top 50%;
-   z-index: -100;
-   pointer-events: none; /* gak bisa di-klik */
-   transform: none !important; /* cegah efek zoom dari AOS/animate.css */
- } 
-}
-
 @keyframes glow {
   0% {
     opacity: 0;
     filter: drop-shadow(0 0 0px #fff);
     transform: translateY(20px);
   }
+
   50% {
     opacity: 1;
     filter: drop-shadow(0 0 15px #fff);
     transform: translateY(0px);
   }
+
   100% {
     opacity: 1;
     filter: drop-shadow(0 0 5px #fff);
@@ -70,3 +60,39 @@
   animation: glow 0.8s ease forwards;
 }
 
+
+@layer base {
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/assets/Cartethyia2.png");
+    background-size: cover;
+    /* background-position: top; */
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    /* min-height: 100vh; */
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/assets/Cartethyia2.png");
+      background-size: cover;
+      background-position: right top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/assets/Cartethyia2.png");
+      background-size: cover;
+      background-position: right top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+  }
+}

@@ -27,10 +27,10 @@ function App() {
         <div className="hero px-4 py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-10">
             <div>
-              <h1 className="animate__animated animate__fadeInTopLeft animate__delay-3s text-5xl/tight font-bold mb-6 bg-gradient-to-bl from-amber-400 via-gray-300 to-blue-400 text-transparent bg-clip-text">
+              <h1 className="text-5xl/tight font-bold mb-6 bg-gradient-to-bl from-amber-400 via-gray-300 to-blue-400 text-transparent bg-clip-text">
                 Hi, I'm CarteChia
               </h1>
-              <p className="animate__animated animate__fadeInBottomLeft animate__delay-3s text-xl/relaxed mb-6 opacity-80 drop-shadow-md">
+              <p className="text-xl/relaxed mb-6 opacity-80 drop-shadow-md">
                 I'm an aspiring Full-Stack Software Engineer with a passion for
                 building scalable and user-friendly applications. This website
                 showcases my project documentation, from early experiments to
@@ -39,22 +39,22 @@ function App() {
               <div className="flex items-center gap-4">
                 <a
                   href="#"
-                  className="animate__bounceInLeft animate__animated animate__delay-3s  bg-blue-500/40 backdrop-blur-md rounded-lg p-3 hover:bg-blue-700/50 transition-all duration-300 text-white font-medium border border-blue-300/30"
+                  className="bg-blue-500/40 backdrop-blur-md rounded-lg p-3 hover:bg-blue-700/50 transition-all duration-300 text-white font-medium border border-blue-300/30"
                 >
                   Download CV <i className="ri-download-line ri-lg"></i>
                 </a>
                 <a
                   href="#"
-                  className="animate__bounceInRight animate__animated animate__delay-3s bg-yellow-300/40 backdrop-blur-md rounded-lg p-3 hover:bg-yellow-500/50 transition-all duration-300 text-white font-medium border border-yellow-300/30"
+                  className="bg-yellow-300/40 backdrop-blur-md rounded-lg p-3 hover:bg-yellow-500/50 transition-all duration-300 text-white font-medium border border-yellow-300/30"
                 >
                   View Projects <i className="ri-code-view ri-lg"></i>
                 </a>
               </div>
             </div>
 
-            <div className="flex justify-center md:ml-20 ml-0 animate__bounceInDown animate__animated animate__delay-4s">
+            <div className="flex justify-center md:ml-20 ml-0">
               <div className="relative w-[480px] h-[480px] overflow-hidden rounded-full border-2 border-white/30 shadow-2xl backdrop-blur-sm">
-                <div className="absolute z-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#868585] to-[#2E2E2E] blur-2xl rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute z-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#faf8f8] to-[#ffffff] blur-2xl rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                 {images.map((src, i) => (
                   <img
                     key={i}
@@ -73,7 +73,7 @@ function App() {
         {/* About Section */}
         <div className="About mt-32 py-10 px-4">
           <div className="xl:w-2/3 lg:w-full mx-auto p-7 bg-zinc-800/80 backdrop-blur-md rounded-lg border border-zinc-600/50 shadow-xl">
-            <div data-aos="zoom-in">
+            <div>
               <img
                 src="/assets/logo.png"
                 alt="myCutiePie"
@@ -115,17 +115,17 @@ function App() {
 
           <div className="Tools mt-32">
             <h1
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="300"
+              
+              
+              
               className="text-4xl/snug font-bold mb-4 text-white drop-shadow-lg"
             >
               Tech Stacks
             </h1>
             <p
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="300"
+              
+              
+              
               className="xl:w-2/5 lg:2/4 md:2/3 sm:3/4 w-full text-base/loose text-white/70 drop-shadow-md"
             >
               Tech Stacks I usually use to build projects
@@ -134,16 +134,13 @@ function App() {
             {/* Grid container */}
             <div
               className="tools-box mt-14 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
-              data-aos="fade-up"
-              data-aos-duration="1000"
+              
+              
             >
               {listTools.map((tool) => (
                 <div
                   className="flex items-center gap-4 p-4 border border-zinc-600/50 rounded-md hover:bg-zinc-800/60 group backdrop-blur-md bg-zinc-900/40 transition-all duration-300"
                   key={tool.id}
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                  data-aos-delay={tool.dad}
                 >
                   <img
                     src={tool.gambar}
@@ -163,17 +160,11 @@ function App() {
         {/* Project */}
         <div className="project mt-32 py-10">
           <h1
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="300"
             className="text-center text-4xl font-bold mb-2"
           >
             Projects
           </h1>
           <p
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="300"
             className="text-base/loose text-center opacity-50"
           >
             Projects List History
@@ -182,12 +173,9 @@ function App() {
             {listProyek.map((project) => (
               <div
                 key={project.id}
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-delay={project.dad}
                 className="p-4 bg-zinc-800/50 backdrop-opacity-35 rounded-xl border border-amber-200"
               >
-                <img src={project.gambar} alt="project image" loading="lazy" />
+                <img src={project.gambar} alt="project image" />
                 <div>
                   <h1 className="text-2xl font-bold my-4">{project.nama}</h1>
                   <p className="text-base/loose mb-4">{project.desk}</p>

@@ -8,7 +8,7 @@ const Navbar = () => {
   useEffect(() => {
     const audio = new Audio("/assets/Imaginarium Theater.mp3");
     audio.loop = true;
-    audio.volume = 1;
+    audio.volume = 0.6;
     audio.muted = false;
     audioRef.current = audio;
 
@@ -92,7 +92,7 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            href="#About"
+            href="About"
             className="sm:text-lg text-base font-medium text-white drop-shadow-lg hover:text-blue-200 transition-colors duration-300"
           >
             About
