@@ -164,7 +164,7 @@ function App() {
                 <div
                   className="flex items-center gap-4 p-4 border border-zinc-600/50 rounded-md hover:bg-zinc-800/60 group backdrop-blur-md bg-zinc-900/40 transition-all duration-300"
                   key={tool.id}
-                  data-aos="fade-in"
+                  data-aos="fade-up"
                   data-aos-delay={tool.id}
                   data-aos-duration="1000"
                 >

@@ -2,41 +2,52 @@ import { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
+    // buat audio instance
     const audio = new Audio("/assets/Imaginarium Theater.mp3");
     audio.loop = true;
-    audio.volume = 0.6;
-    audio.muted = false;
+    audio.volume = 1;
     audioRef.current = audio;
 
-    setIsMuted(audio.muted); // sync state dengan kondisi audio
-
-    audio.play().catch((err) => {
-      console.warn("Autoplay blocked, forcing muted:", err);
-      audio.muted = true;
-      setIsMuted(audio.muted); // <--- sync ulang state biar UI langsung mute
-      audio.play().catch((e) =>
-        console.warn("Muted autoplay also failed:", e)
-      );
+    // coba autoplay
+    audio.play().catch(() => {
+      console.warn("Autoplay diblokir browser, tunggu interaksi user...");
     });
 
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
+    // fallback: play setelah klik pertama user
+    const handleFirstClick = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play().then(() => {
+          setIsMuted(false);
+        });
       }
+    };
+
+    window.addEventListener("click", handleFirstClick, { once: true });
+
+    // cleanup
+    return () => {
+      audio.pause();
+      audio.src = "";
+      audioRef.current = null;
+      window.removeEventListener("click", handleFirstClick);
     };
   }, []);
 
   const toggleAudio = () => {
     if (!audioRef.current) return;
-    const newMuted = !isMuted;
-    audioRef.current.muted = newMuted;
-    setIsMuted(newMuted);
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+      setIsMuted(false);
+    } else {
+      audioRef.current.pause();
+      setIsMuted(true);
+    }
   };
+  
 
 
   useEffect(() => {
