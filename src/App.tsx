@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { listTools, listProyek } from "./data";
 import Preloader from "/src/components/Preloader";
@@ -11,6 +11,23 @@ function App() {
     "/assets/carte aset (1).png",
     "/assets/carte aset (2).png",
   ];
+
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHover, setIsHover] = useState(false);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    // relatif -1 .. 1
+    const x = (e.clientX - left - width / 2) / (width / 2);
+    const y = (e.clientY - top - height / 2) / (height / 2);
+    // clamp biar gak kebablasan
+    const clamp = (v: number, m = 1) => Math.max(-m, Math.min(m, v));
+    setPosition({ x: clamp(x), y: clamp(y) });
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHover(false);
+    setPosition({ x: 0, y: 0 });
+  };
 
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +45,7 @@ function App() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 1350);
 
     return () => clearInterval(intervalId);
   }, [images.length]);
@@ -52,7 +69,7 @@ function App() {
                   </h1>
 
                   <p
-                    className={`text-xl/relaxed mb-6 opacity-80 drop-shadow-md ${
+                    className={`text-xl/relaxed mb-6 text-white/55 drop-shadow-md ${
                       animate ? "tracking-in-expand" : ""
                     }`}
                   >
@@ -86,18 +103,37 @@ function App() {
             </div>
 
             <div className="flex justify-center md:ml-20 ml-0">
-              <div className="animate__animated animate__fadeIn animate__delay-3s relative w-[480px] h-[480px] overflow-hidden rounded-full border-2 border-white/30 shadow-2xl backdrop-blur-sm">
-                <div className="absolute z-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#faf8f8] to-[#ffffff] blur-2xl rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                {images.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Image ${i}`}
-                    className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-700 ease-in-out ${
-                      i === index ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
-                ))}
+              <div className="rounded-full">
+                <div
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => setIsHover(true)}
+                  className="transition ease-in-out duration-300 animate__animated animate__fadeIn animate__delay-3s relative w-[480px] h-[480px] overflow-hidden rounded-full border-2 border-white shadow-2xl"
+                >
+                  {/* Glow background */}
+                  <div className="absolute z-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#faf8f8] to-[#ffffff] blur-2xl rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+                  {/* INNER WRAPPER: semua transform (translate + scale) diaplikasikan di sini */}
+                  <div
+                    className="w-full h-full transition-transform duration-300 ease-out bg-white"
+                    style={{
+                      transform: `translate(${position.x * 18}px, ${
+                        position.y * 18
+                      }px) scale(${isHover ? 1.06 : 1})`,
+                    }}
+                  >
+                    {images.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`Image ${i}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                          i === index ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -116,7 +152,7 @@ function App() {
                 alt="myCutiePie"
                 className="w-12 rounded-md mb-10 sm:hidden"
               />
-              <p className="text-xl/loose mb-1 text-white opacity-90">
+              <p className="text-xl/loose mb-1 text-white/65 opacity-90">
                 Hi, my name is CarteChia. I'm an undergraduate student at the
                 Institute of Technology Kalimantan. I'm a Full Stack Web
                 Developer and a Machine Learning Enthusiast. You will get to
@@ -198,7 +234,13 @@ function App() {
                 data-aos-delay={project.dad}
                 data-aos-duration="1000"
               >
-                <img src={project.gambar} alt="project image" />
+                <div className="overflow-hidden">
+                  <img
+                    src={project.gambar}
+                    alt="project image"
+                    className="hover:scale-125 transition-all"
+                  />
+                </div>
                 <div>
                   <h1 className="text-2xl font-bold my-4">{project.nama}</h1>
                   <p className="text-base/loose mb-4">{project.desk}</p>

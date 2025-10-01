@@ -6,7 +6,6 @@ const Preloader = () => {
   const text = "CarteChia".split("");
 
   useEffect(() => {
-    // total durasi animasi huruf (0.2s per huruf × jumlah huruf) + extra
     const showTime = text.length * 100 + 1000;
 
     const fadeTimer = setTimeout(() => {
@@ -15,7 +14,7 @@ const Preloader = () => {
 
     const endTimer = setTimeout(() => {
       setIsLoading(false);
-    }, showTime + 1000); // fade out 1s
+    }, showTime + 1000);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -39,9 +38,9 @@ const Preloader = () => {
         {text.map((char, index) => (
           <span
             key={index}
-            className="bg-gradient-to-r from-amber-400 via-gray-300 to-blue-400 bg-clip-text text-transparent animate-glow"
+            className="bg-gradient-to-r from-amber-400 via-gray-300 to-blue-400 bg-clip-text text-transparent animate-wave"
             style={{
-              animationDelay: `${index * 0.2}s`,
+              animationDelay: `${index * 0.1}s`,
             }}
           >
             {char}

@@ -92,6 +92,29 @@
   animation: glow 0.8s ease forwards;
 }
 
+@keyframes wave {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 0px #fff);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-30px);
+    filter: drop-shadow(0 0 5px #fff);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 5px #fff);
+    opacity: 1;
+  }
+}
+
+.animate-wave {
+  animation: wave 1s ease-in-out forwards;
+}
+
+
 
 @layer base {
   body {
