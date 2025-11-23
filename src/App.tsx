@@ -16,10 +16,8 @@ function App() {
   const [isHover, setIsHover] = useState(false);
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    // relatif -1 .. 1
     const x = (e.clientX - left - width / 2) / (width / 2);
     const y = (e.clientY - top - height / 2) / (height / 2);
-    // clamp biar gak kebablasan
     const clamp = (v: number, m = 1) => Math.max(-m, Math.min(m, v));
     setPosition({ x: clamp(x), y: clamp(y) });
   };
@@ -54,7 +52,7 @@ function App() {
     <>
       <div className="relative z-10">
         <div className="hero px-4 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-5">
             <div>
               {isLoading ? (
                 <Preloader />
@@ -80,7 +78,7 @@ function App() {
                     learning journey.
                   </p>
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <a
                       href="#"
                       className={`bg-blue-500/40 backdrop-blur-md rounded-lg p-3 hover:bg-blue-700/50 transition-all duration-300 text-white font-medium border border-blue-300/30 ${
@@ -97,7 +95,7 @@ function App() {
                     >
                       View Projects <i className="ri-code-view ri-lg"></i>
                     </a>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
@@ -108,7 +106,7 @@ function App() {
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                   onMouseEnter={() => setIsHover(true)}
-                  className="transition ease-in-out duration-300 animate__animated animate__fadeIn animate__delay-3s relative w-[480px] h-[480px] overflow-hidden rounded-full border-2 border-white shadow-2xl"
+                  className="transition ease-in-out duration-300 animate__animated animate__fadeIn animate__delay-3s relative sm:w-[500px] sm:h-[500px] w-[320px] h-[320px] overflow-hidden rounded-full border-2 border-white shadow-2xl"
                 >
                   {/* Glow background */}
                   <div className="absolute z-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#faf8f8] to-[#ffffff] blur-2xl rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
@@ -119,7 +117,7 @@ function App() {
                     style={{
                       transform: `translate(${position.x * 18}px, ${
                         position.y * 18
-                      }px) scale(${isHover ? 1.06 : 1})`,
+                      }px) scale(${isHover ? 1.1 : 1})`,
                     }}
                   >
                     {images.map((src, i) => (
@@ -225,7 +223,10 @@ function App() {
           <p className="text-base/loose text-center opacity-50">
             Projects List History
           </p>
-          <div className="projects-box mt-14 grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1 ">
+          <div className="flex justify-center items-center py-5 text-2xl text-white/50">
+            <p>coming soon</p>
+          </div>
+          {/* <div className="projects-box mt-14 grid lg:grid-cols-4 gap-4 md:grid-cols-2 grid-cols-1 ">
             {listProyek.map((project) => (
               <div
                 key={project.id}
@@ -265,7 +266,7 @@ function App() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </>
